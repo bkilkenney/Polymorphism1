@@ -8,5 +8,13 @@ namespace Polymorphism1
 {
     class Account
     {
+        public virtual void Deposit()
+        {
+            Console.WriteLine("We added some money");
+        }
+        public virtual void Withdraw()
+        {
+            Console.WriteLine("We took out some money");
+        }
     }
 }

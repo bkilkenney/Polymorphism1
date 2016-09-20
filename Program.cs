@@ -10,6 +10,10 @@ namespace Polymorphism1
     {
         static void Main(string[] args)
         {
+            Savings check = new Savings();  //creating new check in savings account
+            check.Deposit(); //Calling deposit method in savings 
         }
     }
 }
+
+
