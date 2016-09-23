@@ -8,7 +8,6 @@ namespace Polymorphism1
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             Savings check = new Savings();  //creating new check in savings account
