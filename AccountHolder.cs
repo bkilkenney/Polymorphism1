@@ -9,10 +9,11 @@ namespace Polymorphism1
     class AccountHolder
     {
 
-    //Fields
-        private decimal balance = 5000.00m;  //decimal is preferred data type for money b/c of it's accuracy
+        //Fields
         private string accountHolderName = "Scrooge McDuck";
         private int accountNumber = 8675309;
+        private decimal balance = 5000.00m;  //decimal is preferred data type for money b/c of it's accuracy
+        
         
 
     //Constructor to receive initial balance and change it based on new instances
@@ -43,9 +44,21 @@ namespace Polymorphism1
         {
             Balance += dollars;  //Add decimal amount to Balance from property
         }
-        public virtual void Withdrawl(decimal dollars)
+        
+        public virtual bool Withdrawl(decimal dollars)
         {
-            Balance -= dollars; //Subtract decimal amount from Balance from property
-        }
+            bool acceptable = true;  //Bool - Will need either true of false(acceptable)
+            if(Balance - dollars >=0)
+            {
+                Balance -= dollars;
+                acceptable = true;
+            }
+            else
+            {
+                Console.WriteLine("Withdrawl amount cannot exceed account balance.");
+                acceptable = false;                
+            }
+            return acceptable;
+        }           
     }
 }

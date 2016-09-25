@@ -11,6 +11,10 @@ namespace Polymorphism1
         protected static int depositCount = 0;
         protected static int withdrawlCount = 0;
 
+        public ReserveAccount(decimal balance) : base(balance)
+        {
+        }
+
         public decimal ReserveAccountBalance { get; set; }
 
 
