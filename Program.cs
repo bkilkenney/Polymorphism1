@@ -10,9 +10,20 @@ namespace Polymorphism1
     {
         static void Main(string[] args)
         {
-            Savings check = new Savings();  //creating new check in savings account
-            check.Deposit(); //Calling deposit method in savings 
-          
+
+            MainMenu();  //Calling the main menu from method below
+        }
+
+        public static void MainMenu()  //Method for the main menu
+        {
+            Console.WriteLine("Welcome back Mr. McDuck, what would you like to do today?");
+            Console.WriteLine("1. Make a Deposit");
+            Console.WriteLine("2. Withdraw Funds");
+            Console.WriteLine("3. View Account Balances");
+            Console.WriteLine("4. Exit");
+
+            string response = Console.ReadLine();
+            
         }
     }
 }

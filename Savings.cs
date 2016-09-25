@@ -9,15 +9,20 @@ namespace Polymorphism1
     class Savings : AccountHolder 
     {
         protected static int depositCount = 0;
-        protected static int withdrawCount = 0;
+        protected static int withdrawlCount = 0;
+
+        public decimal SavingsAccountBalance { get; set; }
+
 
         public override void Deposit()
         {
-        
+            Deposit();
+            depositCount++;
         }       
-        public override void Withdraw()
+        public override void Withdrawl()
         {
-
+            Withdrawl();
+            withdrawlCount++;
         }
     }
 }

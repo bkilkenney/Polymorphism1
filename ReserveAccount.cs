@@ -9,16 +9,21 @@ namespace Polymorphism1
     class ReserveAccount : AccountHolder
     {
         protected static int depositCount = 0;
-        protected static int withdrawCount = 0;
-        
+        protected static int withdrawlCount = 0;
+
+        public decimal ReserveAccountBalance { get; set; }
+
+
 
         public override void Deposit()
         {
-            Deposit();  
+            Deposit();
+            depositCount++;
         }
-        public override void Withdraw()
+        public override void Withdrawl()
         {
-            Withdraw();
+            Withdrawl();
+            withdrawlCount++;
         }
     }
 }
