@@ -9,7 +9,7 @@ namespace Polymorphism1
     class CheckingAccount : AccountHolder   //CHECKINGACCOUNT & SAVINGS are derived classes.  ACCOUNT is the base class
     {
      //Fields:
-        private decimal checkingAccountBalance = 3000.00m;
+        
         protected static int depositCount = 0;  
         protected static int withdrawlCount = 0;
 

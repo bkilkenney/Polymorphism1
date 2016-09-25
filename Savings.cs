@@ -35,7 +35,7 @@ namespace Polymorphism1
 
 
 
-        //Methods:
+     //Methods:
 
         public decimal CalculateInterest()
         {
@@ -53,7 +53,7 @@ namespace Polymorphism1
             if (base.Balance - dollars >= 0)
             {
                 base.Balance -= dollars;
-                base.Balance -= InterestRate;
+                base.Balance += InterestRate;
                 acceptable = true;
                 withdrawlCount++;
             }

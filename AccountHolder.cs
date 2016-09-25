@@ -9,7 +9,7 @@ namespace Polymorphism1
     class AccountHolder
     {
 
-        //Fields
+    //Fields
         private string accountHolderName = "Scrooge McDuck";
         private int accountNumber = 8675309;
         private decimal balance = 5000.00m;  //decimal is preferred data type for money b/c of it's accuracy
@@ -37,8 +37,13 @@ namespace Polymorphism1
             }
         }
 
+        public int value
+        {
+            get { return value; }
+            set { return; }
+        }
 
-    //Methods
+        //Methods
         //Virtual b/c I'm in the base class
         public virtual void Deposit(decimal dollars)  //Add to balance
         {
