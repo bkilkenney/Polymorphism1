@@ -8,12 +8,28 @@ namespace Polymorphism1
 {
     class Program
     {
+        private static object accountHolderName;
+
         static void Main(string[] args)
         {
+            CheckingAccount check = new int checkingAccountNumber(int 1357976); //Trying to create an object
 
+            
+
+            
+                      
             MainMenu();  //Calling the main menu from method below
+
         }
 
+//Menu items:
+//view client info
+//view balance (checking, reserve, savings)
+//option to deposit funds
+//option to withdraw funds
+
+
+     //Methods:
         public static void MainMenu()  //Method for the main menu
         {
             Console.WriteLine("Welcome back Mr. McDuck, what would you like to do today?");
@@ -23,6 +39,7 @@ namespace Polymorphism1
             Console.WriteLine("4. Exit");
 
             string response = Console.ReadLine();
+           
             
         }
     }

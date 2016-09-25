@@ -6,64 +6,33 @@ using System.Threading.Tasks;
 
 namespace Polymorphism1
 {
-    class AccountHolder
+    abstract class accountHolderName
     {
 
     //Fields
         private string accountHolderName = "Scrooge McDuck";
-        private int accountNumber = 8675309;
+        public static int accountNumber = 8675309;
         private decimal balance = 5000.00m;  //decimal is preferred data type for money b/c of it's accuracy
-        
-        
 
-    //Constructor to receive initial balance and change it based on new instances
-        public AccountHolder(decimal balance)  
+    //Constructor
+        public accountHolderName(string username)
         {
-            Balance = balance;
+            accountHolderName = username;
         }
 
-
-    //Properties to access private variables(fields)
-        public decimal Balance
-        {
-            get { return balance; }
-
-            set    //Validates that the balance is not negative
-            {
-                if (value >= 0)
-                    balance = value;
-                else
-                    throw new Exception("Balance cannot be negative");
-            }
-        }
-
-        public int value
-        {
-            get { return value; }
-            set { return; }
-        }
-
-        //Methods
+    //Methods
         //Virtual b/c I'm in the base class
-        public virtual void Deposit(decimal dollars)  //Add to balance
+        public virtual decimal Deposit(decimal dollars)  //Add to balance
         {
-            Balance += dollars;  //Add decimal amount to Balance from property
+            balance += dollars;  //Add decimal amount to Balance from property
+            return balance;
         }
         
-        public virtual bool Withdrawl(decimal dollars)
+        public virtual decimal Withdrawl(decimal dollars)
         {
-            bool acceptable = true;  //Bool - Will need either true of false(acceptable)
-            if(Balance - dollars >=0)
-            {
-                Balance -= dollars;
-                acceptable = true;
-            }
-            else
-            {
-                Console.WriteLine("Withdrawl amount cannot exceed account balance.");
-                acceptable = false;                
-            }
-            return acceptable;
-        }           
-    }
+            balance -= dollars;
+            return balance;
+        } 
+     }
 }
+

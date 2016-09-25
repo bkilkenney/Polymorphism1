@@ -6,74 +6,47 @@ using System.Threading.Tasks;
 
 namespace Polymorphism1
 {
-    class CheckingAccount : AccountHolder   //CHECKINGACCOUNT & SAVINGS are derived classes.  ACCOUNT is the base class
+    class CheckingAccount : accountHolderName   //Checking, savings and reserved are derived classes.  AccountHolder is the base class
     {
-     //Fields:
-        
-        protected static int depositCount = 0;  
-        protected static int withdrawlCount = 0;
+        //Fields:
+        private decimal balance;
+        private new int accountNumber = 1357976;
+        private string accountHolderName; 
 
-     //Constructors:
-        public CheckingAccount(decimal balance, decimal fee) : base(balance)
+
+        //Constructor
+        public CheckingAccount(accountHolderName) : base(accountHolderName)
         {
-            Fee = fee;
         }
-
 
         //Properties:
-        public new decimal Balance
+        public decimal Balance
         {
-            get { return base.Balance; }
-
-            set    //Validates that the balance is not negative
-            {
-                if (value >= 0)
-                    base.Balance = value;
-                else
-                    throw new Exception("Balance cannot be negative");
-            }
+            get { return this.balance; }
+            set { this.balance = value; }
         }
 
-        public decimal Fee  //Fee for transactions
+        public int AccountNumber
         {
-            get { return Fee; }
-            set
-            {
-                if (value > 0)
-                {
-                    Fee = value;
-                }
-                else
-                    throw new Exception("Fee cannot be negative.");
-            }
-         }
+            get { return this.accountNumber; }
+            set { this.accountNumber = value; }
+        }
 
 
 
      //Methods
-        public override void Deposit(decimal dollars)  //Method, override b/c it's the checkinig account's own version of Deposit()
+        public override decimal Deposit(decimal dollars)  //Method, override b/c it's the checkinig account's own version of Deposit()
         {
-            base.Balance += dollars;
-            depositCount++;
+            this.balance += dollars;
+            return balance;  
         }
 
-        public override bool Withdrawl(decimal dollars)
+        public override decimal Withdrawl(decimal dollars)  //Method, override b/c it's the checkinig account's own version of Deposit()
         {
-            bool acceptable = true;  //Bool - Will need either true of false(acceptable)
-            if (base.Balance - dollars >= 0)
-            {
-                base.Balance -= dollars;
-                base.Balance -= Fee;
-                acceptable = true;
-                withdrawlCount++;
-            }
-            else
-            {
-                Console.WriteLine("Withdrawl amount cannot exceed account balance.");
-                acceptable = false;
-            }
-            return acceptable;
-            
+            this.balance -= dollars;
+            return balance;
         }
+
     }
 }
+

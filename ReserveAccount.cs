@@ -6,54 +6,44 @@ using System.Threading.Tasks;
 
 namespace Polymorphism1
 {
-    class ReserveAccount : AccountHolder
+    class ReserveAccount : accountHolderName
     {
-      //Fields
-        
-        protected static int depositCount = 0;
-        protected static int withdrawlCount = 0;
+        //Fields:
+        private decimal balance;
+        private new int accountNumber = 1357976;
 
-    //Constructor:
-        public ReserveAccount(decimal balance) : base(balance)
+        //Constructor
+        public ReserveAccount(string AccountHolderName) : base(AccountHolderName)
         {
-            Balance = balance;
         }
 
-    //Properties
-    
-        public decimal InterestRate { get; private set; }
-        public decimal ReserveAccountBalance { get; set; }
-
-    //Methods:
-        public decimal CalculateInterest()  //Reserve account gains interest
+        //Properties:
+        public decimal Balance
         {
-            return Balance * InterestRate;
+            get { return this.balance; }
+            set { this.balance = value; }
         }
 
-
-        public override void Deposit(decimal dollars) 
+        public int AccountNumber
         {
-            base.Balance += dollars;
-            depositCount++;
+            get { return this.accountNumber; }
+            set { this.accountNumber = value; }
         }
 
 
-        public override bool Withdrawl(decimal dollars)
+
+        //Methods
+        public override decimal Deposit(decimal dollars)  //Method, override b/c it's the checkinig account's own version of Deposit()
         {
-            bool acceptable = true;  //Bool - Will need either true of false(acceptable)
-            if (base.Balance - dollars >= 0)
-            {
-                base.Balance -= dollars;
-                Balance += InterestRate;
-                acceptable = true;
-                withdrawlCount++;
-            }
-            else
-            {
-                Console.WriteLine("Withdrawl amount cannot exceed account balance.");
-                acceptable = false;
-            }
-            return acceptable;
+            this.balance += dollars;
+            return balance;
         }
+
+        public override decimal Withdrawl(decimal dollars)  //Method, override b/c it's the checkinig account's own version of Deposit()
+        {
+            this.balance -= dollars;
+            return balance;
+        }
+
     }
 }
