@@ -6,33 +6,64 @@ using System.Threading.Tasks;
 
 namespace Polymorphism1
 {
-    class Savings : AccountHolder 
+    class Savings : AccountHolder
     {
         protected static int depositCount = 0;
         protected static int withdrawlCount = 0;
 
-        public Savings(decimal balance) : base(balance)
+        //Constructor
+        public Savings(decimal balance, decimal interestRate) : base(balance)
         {
+            InterestRate = interestRate; //Setting InterestRate property equal to interestRate constructor
         }
 
+        //Properties:
+        public decimal InterestRate
+        {
+            get { return InterestRate; }
+            set
+            {
+                if (value > 0)
+                {
+                    InterestRate = value;
+                }
+                else
+                    throw new Exception("Interest rate must not be negative");
+            }
+        }
         public decimal SavingsAccountBalance { get; set; }
 
 
-        public override void Deposit()
+
+        //Methods:
+
+        public decimal CalculateInterest()
         {
-            Deposit();
+            return Balance * InterestRate;
+        }
+
+        public override void Deposit(decimal dollars)  //Method, override b/c it's the checkinig account's own version of Deposit()
+        {
+            base.Balance += dollars;
             depositCount++;
-        }       
-        public override void Withdrawl()
+        }
+        public override bool Withdrawl(decimal dollars)
         {
-            Withdrawl();
-            withdrawlCount++;
+            bool acceptable = true;  //Bool - Will need either true of false(acceptable)
+            if (base.Balance - dollars >= 0)
+            {
+                base.Balance -= dollars;
+                base.Balance -= InterestRate;
+                acceptable = true;
+                withdrawlCount++;
+            }
+            else
+            {
+                Console.WriteLine("Withdrawl amount cannot exceed account balance.");
+                acceptable = false;
+            }
+            return acceptable;
         }
     }
 }
 
-//The following are some actions that can be taken in the deposit body.  When the deposit methods are called the count will go up
-//base.Deposit(); //Refers back to Deposit in the AccountHolder class.  It is NOT an override. 
-//Console.WriteLine("We removed some cash in a different way");
-//Savings.depositCount++;  //Should probably create a for loop to increment and watch the number of deposits go up
-//Console.WriteLine("You have made " +depositCount+ " deposit to date");

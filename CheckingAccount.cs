@@ -19,8 +19,9 @@ namespace Polymorphism1
             Fee = fee;
         }
 
-    //Properties:
-        public decimal Balance
+
+        //Properties:
+        public new decimal Balance
         {
             get { return base.Balance; }
 
@@ -30,7 +31,7 @@ namespace Polymorphism1
                     base.Balance = value;
                 else
                     throw new Exception("Balance cannot be negative");
-            }  
+            }
         }
 
         public decimal Fee  //Fee for transactions
@@ -45,7 +46,7 @@ namespace Polymorphism1
                 else
                     throw new Exception("Fee cannot be negative.");
             }
-        }
+         }
 
 
 
